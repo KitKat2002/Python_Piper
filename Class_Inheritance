@@ -1,3 +1,4 @@
+#Creates the parent class
 class Staff:
     Name: " "
     Phone: " "
@@ -6,11 +7,11 @@ class Staff:
     Ethnicity: " "
     Languages_Spoken: " "
     Experience: " "
-
+#Creates child class one
 class Host/Hostess(Staff):
     People_Seated: " "
     Pay: " "
-
+#Creates child class two
 class Waiter/Waitress(Staff):
     Orders_Served: " "
     Orders_Taken_Back: " " 
