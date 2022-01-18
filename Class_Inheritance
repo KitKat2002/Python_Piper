@@ -8,10 +8,10 @@ class Staff:
     Languages_Spoken: " "
     Experience: " "
 #Creates child class one
-class Host/Hostess(Staff):
+class Host_Hostess(Staff):
     People_Seated: " "
     Pay: " "
 #Creates child class two
-class Waiter/Waitress(Staff):
+class Waiter_Waitress(Staff):
     Orders_Served: " "
     Orders_Taken_Back: " " 
