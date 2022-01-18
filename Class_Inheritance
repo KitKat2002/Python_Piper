@@ -1,0 +1,16 @@
+class Staff:
+    Name: " "
+    Phone: " "
+    Age: " "
+    Gender: " "
+    Ethnicity: " "
+    Languages_Spoken: " "
+    Experience: " "
+
+class Host/Hostess(Staff):
+    People_Seated: " "
+    Pay: " "
+
+class Waiter/Waitress(Staff):
+    Orders_Served: " "
+    Orders_Taken_Back: " " 
