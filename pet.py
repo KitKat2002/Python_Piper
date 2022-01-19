@@ -1,8 +1,9 @@
+# Creates main class "pet"
 class Pet:
     name = "Fido"
     species = "Canine"
     pID = "43"
-
+#Parent class function
     def getPetInfo(self):
         pet_name = input("Enter your pet's name: ")
         pet_species = input("Enter your pet's species: ")
@@ -11,13 +12,13 @@ class Pet:
             print("Hello, {}.".format(pet_name))
         else:
             print("Pet name or ID is incorrect.")
-
+# Creates child class "Large_Pet"
 class Large_Pet(Pet):
     weight = " "
     diet = " "
     temperment = " "
     brand = " "
-
+#Child class function
     def getPetInfo(self):
         pet_name = input("Enter your pet's name: ")
         pet_species = input("Enter your pet's species: ")
@@ -28,13 +29,13 @@ class Large_Pet(Pet):
             print("Pet name or brand is incorrect.")
 
 
-
+# Creates second child class "Pet_Diagnosis"
 class Pet_Diagnosis(Pet):
     symptoms = " "
     duration_of_symptoms = " "
     last_location = " "
     illness = " "
-
+#Second child class function
     def getPetInfo(self):
         pet_name = input("Enter your pet's name: ")
         pet_species = input("Enter your pet's species: ")
