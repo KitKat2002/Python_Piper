@@ -9,7 +9,7 @@ class Bike(ABC):
         pass
 #utilizes information from parent class
 class BikeMonthlyPayment(Bike):
-    def monthlyPayment(self, amount):
+    def payment(self, amount):
         print('After this month\'s payment of {}, your total remaining due is $500 '.format(amount))
 
 obj = BikeMonthlyPayment()
