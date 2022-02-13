@@ -31,12 +31,12 @@ def browse_button2():
     print(filename)
 
 def submitFunction() :
-    for root, dirs,files in os.walk(origin_path):
+    for root, dirs,files in os.walk(origin_path.get()):
         for fname in files:
-            path = os.path.join(root, fname)
+            path = os.path.join(fname, root)
             st = os.stat(path)
             mtime = dt.datetime.fromtimestamp(st.st_mtime)
-            shutil.move(path, dest)
+            shutil.move(path, receiving_path)
     print('Submit button is clicked.')
 
 
@@ -75,7 +75,7 @@ file_path = 'file:///'+os.getcwd()+'/' + ''
 print("Last modified: %s" % time.ctime(os.path.getmtime(file_path)))
 print("Created: %s" % time.ctime(os.path.getctime(file_path)))
 
-for root, dirs,files in os.walk(origin_path):  
+for root, dirs,files in os.walk(origin_path.get()):  
     for fname in files:
         path = os.path.join(root, fname)
         st = os.stat(path)    
@@ -83,11 +83,11 @@ for root, dirs,files in os.walk(origin_path):
         if mtime > ago:
             print("True:  ", fname, " at ", mtime.strftime("%H:%M %m/%d/%Y"))
             shutil.move(path, dest)
-            # this is actual move
+
 
 
 def find_info(): #this first func. works fine.for root, dirs, files in os.walk(created):
-    for root, dirs, files in os,walk(origin_path):
+    for root, dirs, files in os,walk(origin_path.get()):
         for fname in files:
             path = os.path.join(root, fname)
             st = os.stat(path)
