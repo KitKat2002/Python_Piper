@@ -82,7 +82,7 @@ for root, dirs,files in os.walk(origin_path.get()):
         mtime = dt.datetime.fromtimestamp(st.st_mtime)
         if mtime > ago:
             print("True:  ", fname, " at ", mtime.strftime("%H:%M %m/%d/%Y"))
-            shutil.move(path, dest)
+            shutil.move(created, dest)
 
 
 
@@ -104,3 +104,4 @@ print (move())
 
 print (os.listdir(dest))
 print (os.listdir(created))
+
