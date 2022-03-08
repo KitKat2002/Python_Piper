@@ -11,38 +11,31 @@ import datetime as dt
 def browse_button():
     # Allow user to select a directory and store it in global var
     # called origin_path
-##    global origin_path
+    global origin_path
     lbl1.delete(0,'end')
     foldername = filedialog.askdirectory()
     lbl1.insert(0,foldername)
-##    origin_path.set(filename)
-##    print(filename)
+    origin_path.set(foldername)
 
 def browse_button2():
     # Allow user to select a directory and store it in global var
     # called receiving_path
-##    global receiving_path
-   
-    lbll_2.delete(0, 'end')
+    global receiving_path
+    lbll_2.delete(0,'end')
     foldername = filedialog.askdirectory()
     lbll_2.insert(0,foldername)
-##    receiving_path.set(filename)
-##    print(filename)
+    receiving_path.set(foldername)
 
 def submitFunction() :
     source = lbl1.get()
-
     files = os.listdir(source)
-    
-##    for root, dirs,files in os.walk(origin_path.get()):
-    for fname in files:
-        path = os.path.join(source, fname)
-        print("printing file names")
-        print(path)
-        st = os.stat(path)
-        mtime = dt.datetime.fromtimestamp(st.st_mtime)
-##            shutil.move(path, receiving_path.get())
-    print('Submit button is clicked.')
+    for files in os.walk(origin_path.get()):
+        for fname in files:
+            path = os.path.join(source, fname)
+            st = os.stat(path)
+            mtime = dt.datetime.fromtimestamp(st.st_mtime)
+            shutil.move(path, receiving_path.get())
+            print('Submit button is clicked.')
 
 root = Tk()
 origin_path = StringVar()
@@ -52,11 +45,8 @@ receiving_path = StringVar()
 lbl1 = Entry(master=root)
 lbl1.grid(row=0, column=1)
 #Second Browse Button Label
-lbl1_2 = Entry(master=root)
-lbl1_2.grid(row=1, column=1)
-
-##lbl1_3 = Label(master=root)
-##lbl1_3.grid(row=2, column=1)
+lbll_2 = Entry(master=root)
+lbll_2.grid(row=1, column=1)
 
 button = Button(text="Browse", command=browse_button)
 button.grid(row=0, column=3)
@@ -82,31 +72,28 @@ print("Created: %s" % time.ctime(os.path.getctime(file_path)))
 mainloop()
 
 ##for root, dirs,files in os.walk(origin_path.get()):  
-##    for fname in files:
-##        path = os.path.join(root, fname)
-##        print(path)
-##        st = os.stat(path)    
-##        mtime = dt.datetime.fromtimestamp(st.st_mtime)
-##        if mtime > ago:
-##            print("True:  ", fname, " at ", mtime.strftime("%H:%M %m/%d/%Y"))
-##            shutil.move(created, dest)
+for fname in files:
+    path = os.path.join(source, fname)
+    print(path)
+    st = os.stat(path)
+    mtime = dt.datetime.fromtimestamp(st.st_mtime)
+    if mtime > ago:
+        print("True:  ", fname, " at ", mtime.strftime("%H:%M %m/%d/%Y"))
+        shutil.move(created, dest)
 
 
 
-##def find_info(): #this first func. works fine.for root, dirs, files in os.walk(created):
+def find_info(): #this first func. works fine.for root, dirs, files in os.walk(created):
 ##    for root, dirs, files in os.walk(origin_path.get()):
-##        for fname in files:
-##            path = os.path.join(root, fname)
-##            st = os.stat(path)
-##            mtime = dt.datetime.fromtimestamp(st.st_mtime)                          
-##    if mtime > ago:
-##        print(True)
-##    else:
-##        print(False)
+    for fname in files:
+        path = os.path.join(source, fname)
+        st = os.stat(path)
+        mtime = dt.datetime.fromtimestamp(st.st_mtime)                          
+    if mtime > ago:
+        print(True)
+    else:
+        print(False)
 
 
 ##print (find_info())                           
 ##print (move())                               
-
-##print (os.listdir(dest))
-##print (os.listdir(created))
