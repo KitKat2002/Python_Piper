@@ -73,7 +73,6 @@ mainloop()
   
 for fname in files:
     path = os.path.join(source, fname)
-    print(path)
     st = os.stat(path)
     mtime = dt.datetime.fromtimestamp(st.st_mtime)
     if mtime > ago:
