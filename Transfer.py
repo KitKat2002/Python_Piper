@@ -29,13 +29,12 @@ def browse_button2():
 def submitFunction() :
     source = lbl1.get()
     files = os.listdir(source)
-    for files in os.walk(origin_path.get()):
-        for fname in files:
-            path = os.path.join(source, fname)
-            st = os.stat(path)
-            mtime = dt.datetime.fromtimestamp(st.st_mtime)
-            shutil.move(path, receiving_path.get())
-            print('Submit button is clicked.')
+    for fname in files:
+        path = os.path.join(source, fname)
+        st = os.stat(path)
+        mtime = dt.datetime.fromtimestamp(st.st_mtime)
+        shutil.move(path, receiving_path.get())
+        print('Submit button is clicked.')
 
 root = Tk()
 origin_path = StringVar()
@@ -71,7 +70,7 @@ print("Created: %s" % time.ctime(os.path.getctime(file_path)))
 
 mainloop()
 
-##for root, dirs,files in os.walk(origin_path.get()):  
+  
 for fname in files:
     path = os.path.join(source, fname)
     print(path)
@@ -84,7 +83,6 @@ for fname in files:
 
 
 def find_info(): #this first func. works fine.for root, dirs, files in os.walk(created):
-##    for root, dirs, files in os.walk(origin_path.get()):
     for fname in files:
         path = os.path.join(source, fname)
         st = os.stat(path)
