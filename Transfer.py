@@ -33,8 +33,10 @@ def submitFunction() :
         path = os.path.join(source, fname)
         st = os.stat(path)
         mtime = dt.datetime.fromtimestamp(st.st_mtime)
-        shutil.move(path, receiving_path.get())
-        print('Submit button is clicked.')
+        if mtime > ago:
+            print("True:  ", fname, " at ", mtime.strftime("%H:%M %m/%d/%Y"))
+            shutil.move(path, receiving_path.get())
+            print('Submit button is clicked.')
 
 root = Tk()
 origin_path = StringVar()
@@ -60,8 +62,6 @@ now = dt.datetime.now()
 ago = now-dt.timedelta(hours=24)
 print(ago)
 strftime = '%H:%M %m/%d/%Y'
-created = 'origin_path'
-dest = 'receiving_path'
 file_path = os.getcwd()
 print(file_path)
 
@@ -70,27 +70,15 @@ print("Created: %s" % time.ctime(os.path.getctime(file_path)))
 
 mainloop()
 
-  
-for fname in files:
-    path = os.path.join(source, fname)
-    st = os.stat(path)
-    mtime = dt.datetime.fromtimestamp(st.st_mtime)
-    if mtime > ago:
-        print("True:  ", fname, " at ", mtime.strftime("%H:%M %m/%d/%Y"))
-        shutil.move(created, dest)
 
-
-
-def find_info(): #this first func. works fine.for root, dirs, files in os.walk(created):
+def move():
+    source = lbl1.get()
+    files = os.listdir(source)
     for fname in files:
         path = os.path.join(source, fname)
+        print(path)
         st = os.stat(path)
-        mtime = dt.datetime.fromtimestamp(st.st_mtime)                          
-    if mtime > ago:
-        print(True)
-    else:
-        print(False)
-
-
-##print (find_info())                           
-##print (move())                               
+        mtime = dt.datetime.fromtimestamp(st.st_mtime)
+        if mtime > ago:
+            print("True:  ", fname, " at ", mtime.strftime("%H:%M %m/%d/%Y"))
+            shutil.move(path, receiving_path.get())                                          
